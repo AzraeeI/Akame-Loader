@@ -5,10 +5,10 @@ Akame is an open-source C++ Crypter. Stub &amp;&amp; Builder coded in Visual Stu
 "Akame Crypter.exe" [-Command] [-Option] [-o "Output File.exe"] C:/path/to/file/file.exe
 ## Commands
 !Use them in this order
--h -> Help page || -i -> Info page
--s -> Show file information && -v -> Save informations as txt
--X -> Pack with XOR [fastest] || -A -> pack with AES
--t -> Test packed file
+-h -> Help page OR -i -> Info page          
+-s -> Show file information AND -v -> Save informations as txt          
+-X -> Pack with XOR [fastest] OR -A -> pack with AES          
+-t -> Test packed file          
 ## Features
 - Sandbox detection
 - Virtual Environment Detection
