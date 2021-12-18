@@ -12,7 +12,7 @@ Akame is an open-source C++ Crypter. Stub &amp;&amp; Builder coded in Visual Stu
 **-v** -> Save informations as txt          
 * **-X** -> Pack with XOR [fastest]             
 ***OR***
-* **-A** -> pack with AES          
+* **-A** -> pack with AES [safest]           
 **-t** -> Test packed file         
 ## Options
 ### !Use them in this order       
