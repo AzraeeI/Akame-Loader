@@ -5,14 +5,14 @@ Akame is an open-source C++ Crypter. Stub &amp;&amp; Builder coded in Visual Stu
 "Akame Crypter.exe" [-Command] [-Option] [-o "Output File.exe"] C:/path/to/file/file.exe
 ## Commands
 ### !Use them in this order                   
-1. **-h** / **--help** -> Help page         
+* **-h** / **--help** -> Help page         
 ***OR***
-2. **-i** / **--info** -> Info page          
+* **-i** / **--info** -> Info page          
 **-s** -> Show file information             
 **-v** -> Save informations as txt          
-1. **-X** -> Pack with XOR [fastest]             
+* **-X** -> Pack with XOR [fastest]             
 ***OR***
-2. **-A** -> pack with AES          
+* **-A** -> pack with AES          
 **-t** -> Test packed file         
 ## Options
 ### !Use them in this order       
