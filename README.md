@@ -3,19 +3,17 @@
 Akame is an open-source C++ Crypter. Stub &amp;&amp; Builder coded in Visual Studio.
 ## Usage
 "Akame Crypter.exe" [-Command] [-Option] [-o "Output File.exe"] C:/path/to/file/file.exe
-## Commands
-### !Use them in this order                   
+## Commands             
 * **-h** / **--help** -> Help page         
 ***OR***
 * **-i** / **--info** -> Info page          
-**-s** -> Show file information             
-**-v** -> Save informations as txt          
+**-s** -> Show file informations             
+**-v** -> Save file informations as txt          
 * **-X** -> Pack with XOR [fastest]             
 ***OR***
 * **-A** -> Pack with AES [safest]           
 **-t** -> Test packed file         
-## Options
-### !Use them in this order       
+## Options  
 **-q** -> Be quiet           
 **-k** -> Keep backup file       
 **-o File.exe** -> write output to 'File.exe'       
