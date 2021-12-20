@@ -17,12 +17,12 @@ void Help() {
 	// Commands
 	printf("\n\nCommands:\n");
 	SetConsoleTextAttribute(hConsole, 7);
-	printf("!Use them in this order\n-h -> help page \t\t-i -> info page\n-s -> show file informations\t-v -> save informations as txt\n-X -> Pack with XOR [fastest]\t-A -> Pack with AES [safest]\n-t -> test packed file");
+	printf("-h -> Help page \t\t-i -> Info page\n-s -> Show file informations\t-v -> Save informations as txt\n-X -> Pack with XOR [fastest]\t-A -> Pack with AES [safest]\n-t -> Test packed file");
 	SetConsoleTextAttribute(hConsole, 6);
 	// Options
 	printf("\n\nOptions:\n");
 	SetConsoleTextAttribute(hConsole, 7);
-	printf("!Use them in this order\n-q \t\t-> be quiet\n-o File.exe \t-> write output to 'File.exe'\n-k \t\t-> Keep backup file\nfile.exe \t-> DLL/Executable to crypt\n");
+	printf("-q \t\t-> Be quiet\n-o File.exe \t-> Write output to 'File.exe'\n-k \t\t-> Keep backup file\nfile.exe \t-> Executable to crypt\n");
 	// End
 	SetConsoleTextAttribute(hConsole, 2);
 	printf("\nAkame Crypter comes with ABSOLUTELY NO WARRANTY\nFor more details visit https://github.com/Wtf-Is-This-x1337/Akame\n");
@@ -36,10 +36,14 @@ int main(int argc, char* argv[]) {
 /_/ |_/_/\_\\_,_/_/_/_/\__/  \___/_/  \_, / .__/\__/\__/_/   
                                      /___/_/                 
 )");
+
+	// Help page
 	if (argc == 1 || (string)argv[1]=="-h" || (string)argv[1]=="--help") {
 		Help();
 		return 0;
 	}
+
+	// Info Page
 	if ((string)argv[1] == "-i" || (string)argv[1] == "--info") {
 		// Credits
 		printf("\nCreated by	-> WtfIsThis");
@@ -59,8 +63,9 @@ int main(int argc, char* argv[]) {
 	}
 
 	// Variables
-	string filepath = (string)argv[argc-1];
+	string filepath = (string)argv[argc-1], fullcommand;
 	struct stat fileInfo;
+	bool quiet = false;
 
 	// Error Handling
 	if (!file_exists(filepath) || filepath.find(".exe") == string::npos) {
@@ -73,7 +78,17 @@ int main(int argc, char* argv[]) {
 	}
 
 	// Commands
-	if ((string)argv[1] == "-s") {
+	for (unsigned int i = 1; i < argc; i++) {
+		fullcommand += argv[i] + string(" ");
+	}
+
+	if (fullcommand.find("-q ") != string::npos) {
+		cout << "Quiet mode, pretty buggy\n";
+		quiet = true;
+	}
+
+	// Setup
+	if (fullcommand.find("-s ") != string::npos || fullcommand.find("-v ") != string::npos) {
 		if (stat(argv[argc - 1], &fileInfo) != 0) {
 			printf("\n!Error: ");
 			SetConsoleTextAttribute(hConsole, 12);
@@ -82,17 +97,28 @@ int main(int argc, char* argv[]) {
 			Help();
 			return 0;
 		}
-		cout << "\nFile Information ->";
-		cout << "\nFile Name		- " << filepath;
-		cout << "\nI-Node Number		- "	<< (long)fileInfo.st_ino;
-		cout << "\nFile Size		- "	<< fileInfo.st_size << " bytes || " << fileInfo.st_size/1024 << " kilobytes";
-		cout << "\nDevice			- "	<< (char)(fileInfo.st_dev + 'A') << ":/";
-		cout << "\nMode			- "	<< (unsigned long)fileInfo.st_mode;
-		cout << "\nLink Count		- "	<< (long)fileInfo.st_nlink;
-		cout << "\nOwnership		- UID=" << (long)fileInfo.st_uid << " GID=" << (long)fileInfo.st_gid;
-		cout << "\nLast Status Change	- "	<< ctime(&fileInfo.st_ctime);
-		cout << "Last Access		- "	<< ctime(&fileInfo.st_atime);
-		cout << "Last Modification	- "	<< ctime(&fileInfo.st_mtime);
 	}
+
+	// File information (-s)
+	if (fullcommand.find("-s ") != string::npos){ 
+		if(!quiet)
+			cout << "\nFile Information ->\nFile Name		- " << filepath << "\nI-Node Number		- "	<< (long)fileInfo.st_ino << "\nFile Size		- "	<< fileInfo.st_size << " bytes || " << fileInfo.st_size/1024 << " kilobytes" << "\nDevice			- "	<< (char)(fileInfo.st_dev + 'A') << ":/\nMode			- "	<< (unsigned long)fileInfo.st_mode << "\nLink Count		- "	<< (long)fileInfo.st_nlink << "\nOwnership		- UID=" << (long)fileInfo.st_uid << " GID=" << (long)fileInfo.st_gid << "\nLast Status Change	- "	<< ctime(&fileInfo.st_ctime) << "Last Access		- "	<< ctime(&fileInfo.st_atime) << "Last Modification	- "	<< ctime(&fileInfo.st_mtime);
+	}
+
+	// Save file informations as txt (-v)
+	if (fullcommand.find("-v ") != string::npos) {
+		ofstream fileinfo("FileInformations.txt");
+		fileinfo << "File Information ->\nFile Name		- " << filepath << "\nI-Node Number		- " << (long)fileInfo.st_ino << "\nFile Size		- " << fileInfo.st_size << " bytes || " << fileInfo.st_size / 1024 << " kilobytes" << "\nDevice			- " << (char)(fileInfo.st_dev + 'A') << ":/\nMode			- " << (unsigned long)fileInfo.st_mode << "\nLink Count		- " << (long)fileInfo.st_nlink << "\nOwnership		- UID=" << (long)fileInfo.st_uid << " GID=" << (long)fileInfo.st_gid << "\nLast Status Change	- " << ctime(&fileInfo.st_ctime) << "Last Access		- " << ctime(&fileInfo.st_atime) << "Last Modification	- " << ctime(&fileInfo.st_mtime);
+		fileinfo.close();
+	}
+
+	// Backup file
+	if (fullcommand.find("-k ") != string::npos) {
+		system("mkdir Backup");
+		string copycommand = string(R"(copy ")") + filepath + string(R"(" Backup)");
+		cout << "\nBackup -> ";
+		system(copycommand.c_str());
+	}
+
 	return 0;
 }
