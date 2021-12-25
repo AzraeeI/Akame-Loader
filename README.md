@@ -1,6 +1,6 @@
 # Akame
 ## Details
-Akame is an open-source C++ Crypter. Stub &amp;&amp; Builder coded in Visual Studio.
+Akame is an open-source C++ Crypter. Stub coded in C &amp;&amp; Builder coded in Python.
 ## Usage
 "Akame Crypter.exe" [-Command] [-Option] [-o "Output File.exe"] C:/path/to/file/file.exe
 ## Commands             
