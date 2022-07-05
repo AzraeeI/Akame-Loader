@@ -1,30 +1,5 @@
 # Akame
 ## Details
-Akame is an open-source C++ Crypter. Stub coded in C &amp;&amp; Builder coded in Python.
-## Usage
-"Akame Crypter.exe" [-Command] [-Option] [-o "Output File.exe"] C:/path/to/file/file.exe
-## Commands             
-* **-h** / **--help** -> Help page         
-***OR***
-* **-i** / **--info** -> Info page          
-**-s** -> Show file informations             
-**-v** -> Save file informations as txt          
-* **-X** -> Pack with XOR [fastest]             
-***OR***
-* **-A** -> Pack with AES [safest]           
-**-t** -> Test packed file         
-## Options  
-**-q** -> Be quiet           
-**-k** -> Keep backup file       
-**-o File.exe** -> write output to 'File.exe'       
-**file.exe** -> Executable to crypt        
-## Features
-- Sandbox detection
-- Virtual Environment Detection
-- AES Encryption
-- XOR Encryption
-- Akame Encryption (soon, will combine 2 basic algorithms in a special way)
-## Video
 SOON
 ## License
 MIT License
