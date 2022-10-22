@@ -1,5 +1,5 @@
 # Akame
-![alt text](https://raw.githubusercontent.com/Wtf-Is-This-x1337/Akame-Loader/main/Images/akame.png)
+![alt text](https://raw.githubusercontent.com/Wtf-Is-This-x1337/Akame-Loader/main/Images/akame.png =250x250)
 ## Details
 SOON
 ## License
