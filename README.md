@@ -1,5 +1,5 @@
 # Akame
-![](https://raw.githubusercontent.com/Wtf-Is-This-x1337/Akame-Loader/main/Images/akame.png | width=100)
+<img src="[https://camo.githubusercontent.com/...](https://raw.githubusercontent.com/Wtf-Is-This-x1337/Akame-Loader/main/Images/akame.png)" width="200" height="400" />
 ## Details
 SOON
 ## License
