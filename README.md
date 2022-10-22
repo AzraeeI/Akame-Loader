@@ -1,5 +1,7 @@
 # Akame
-<img align="center" src="https://raw.githubusercontent.com/Wtf-Is-This-x1337/Akame-Loader/main/Images/akame.png" width="250" height="250"/>
+<p align="center">
+  <img width="250" height="250" src="https://raw.githubusercontent.com/Wtf-Is-This-x1337/Akame-Loader/main/Images/akame.png" width="250" height="250">
+</p>
 An open source, UD shellcode loader written in C++17
 
 ## Details
