@@ -1,8 +1,10 @@
 # Akame
+An open source, UD shellcode loader written in C++17
 <img src="https://raw.githubusercontent.com/Wtf-Is-This-x1337/Akame-Loader/main/Images/akame.png" width="250" height="250" />
 
 ## Details
 SOON
+
 ## License
 MIT License
 
