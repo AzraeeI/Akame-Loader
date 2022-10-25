@@ -31,13 +31,13 @@
 - Dependencies: user32.lib;advapi32.lib;crypt32.lib;
 
 **6. Add a certificate to your executable<br>**
+  ! Change "Akame.exe" to whatever your executable name is<br>
 - move Akame.exe Resources && cd Resources<br>
 - makecert.exe -r -pe -n "CN=Akame CA" -ss CA -sr CurrentUser -a sha256 -cy authority -sky signature -sv AkameCA.pvk AkameCA.cer<br>
 - certutil -user -addstore Root AkameCA.cer<br>
 - makecert.exe -pe -n "CN=Akame Cert" -a sha256 -cy end -sky signature -ic AkameCA.cer -iv AkameCA.pvk -sv AkameCert.pvk AkameCert.cer<br>
 - pvk2pfx.exe -pvk AkameCert.pvk -spc AkameCert.cer -pfx AkameCert.pfx<br>
 - signtool.exe sign /v /f AkameCert.pfx /t http://timestamp.digicert.com/?alg=sha1 Akame.exe<br>
-! Change "Akame.exe" to whatever your executable name is
 
 ## VirusTotal Scan (3/71 security vendors and no sandboxes)
 I uploaded the loader to Virus Total because I don't want this to be used for malicious purposes!<br>
