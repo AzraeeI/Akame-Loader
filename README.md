@@ -7,10 +7,16 @@
 ## Details
 SOON
 
+## VirusTotal Scan (3/71 security vendors and no sandboxes flagged my meterpreter as malicious)
+I uploaded the loader to Virus Total because I don't want this to be used for malicious purposes!
+Image:
+
+Link: https://www.virustotal.com/gui/file/68e6a25457093584a043ed3f721be9bc9b6456edd792cb4e30054e85bdc4119f?nocache=1
+
 ## License
 MIT License
 
-Copyright (c) 2021 WtfIsThis
+Copyright (c) 2022 WtfIsThis
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
