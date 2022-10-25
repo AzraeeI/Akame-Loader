@@ -5,6 +5,19 @@
 <h4 align="center">An open source, UD shellcode loader written in C++17</h4>
 
 ## Details
+Icon: https://icon-icons.com/icon/Halloween-eye/109170
+| Name | Details |
+| ------ | ------ |
+| Project Name | Akame Loader |
+| Project Author | WtfIsThis |
+| Project Timeline | 2022 |
+| Programming Language | C++ |
+| Platform | Windows |
+| Version | 1.0 |
+| License | MIT |
+| Dependencies | None |
+| Build | Release - x64 |
+! If you change the encryption method and want to keep your executable UD for a longer period of time, don't use VirusTotal / AntiScan.me / any other site that distributes to security vendors.
 
 ## Build instructions
 **1. Generate a shellcode with metasploit<br>**
