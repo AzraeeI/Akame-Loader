@@ -8,10 +8,10 @@
 Icon: https://icon-icons.com/icon/Halloween-eye/109170
 | Name | Details |
 | ------ | ------ |
-| Project Name | Akame Loader |
-| Project Author | WtfIsThis |
-| Project Timeline | 2022 |
-| Programming Language | C++ |
+| Name | Akame Loader |
+| Author | WtfIsThis |
+| Timeline | 2022 |
+| Language | C++ |
 | Platform | Windows |
 | Version | 1.0 |
 | License | MIT |
