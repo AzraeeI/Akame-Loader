@@ -8,7 +8,7 @@
 
 
 ## VirusTotal Scan (3/71 security vendors and no sandboxes flagged my meterpreter as malicious)
-I uploaded the loader to Virus Total because I don't want this to be used for malicious purposes!
+I uploaded the loader to Virus Total because I don't want this to be used for malicious purposes!<br>
 The shellcode used was generated with metasploit (payload: windows/x64/meterpreter/reverse_tcp) and encrypted by \resources\encrypt.exe.<br>
 The loader was build with VS22 and signed with a sha1 certificate
 
