@@ -24,8 +24,8 @@ Icon: https://icon-icons.com/icon/Halloween-eye/109170
 1. Uses WINAPI WinMain so it doesn't popup any console window
 2. Checks the current hard disk, if the size is under 100GB it closes itself
 3. Sleeps for 10000ms (10s)
-4. Checks if any tickcount-related function was manipulated by a sandbox (by checking the hashes and comparing the time slept with the time elapsed on the machine), if something is wrong, it closes itself
-5. Stores the IV, the Key, and the payload as encrypted vectors
+4. Checks if any tickcount-related function was manipulated by a sandbox (by checking the hashes and comparing the time slept with the time elapsed on the machine), if something seems wrong, it closes itself
+5. Stores the IV, the encryption Key, and the encrypted payload as vectors
 6. Allocates a memory buffer for the payload
 7. Decrypts the payload (aes256) and closes itself if something doesn't work correctly
 8. Copies the payload to a new buffer
