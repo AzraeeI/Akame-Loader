@@ -8,8 +8,8 @@
 Icon: https://icon-icons.com/icon/Halloween-eye/109170
 | Name | Details |
 | ------ | ------ |
-| Name | Akame Loader |
-| Author | WtfIsThis |
+| Project Name | Akame Loader |
+| Project Author | WtfIsThis |
 | Timeline | 2022 |
 | Language | C++ |
 | Platform | Windows |
@@ -17,6 +17,7 @@ Icon: https://icon-icons.com/icon/Halloween-eye/109170
 | License | MIT |
 | Dependencies | None |
 | Build | Release - x64 |
+
 ! If you change the encryption method and want to keep your executable UD for a longer period of time, don't use VirusTotal / AntiScan.me / any other site that distributes to security vendors.
 
 ## Build instructions
