@@ -68,8 +68,8 @@ Icon: https://icon-icons.com/icon/Halloween-eye/109170
 ## Video POC
 Platform: Windows 10 x64 <br>
 Antivirus: Windows Defender <br>
-Date: 24/10/2022 <br>
-Link: https://streamable.com/mwknij
+Link: https://streamable.com/mwknij (24/10/2022) <br>
+! Blackscreens in the video caused by UAC 
   
 ## VirusTotal Scan (3/71 security vendors and no sandboxes on 24/10/2022)
 I uploaded the loader to Virus Total because I don't want this to be used for malicious purposes!<br>
