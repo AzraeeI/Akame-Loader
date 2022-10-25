@@ -2,7 +2,7 @@
 <p align="center">
   <img width="250" height="250" src="https://raw.githubusercontent.com/Wtf-Is-This-x1337/Akame-Loader/main/Images/akame.png" width="250" height="250">
 </p>
-<h4 align="center">An open source, UD shellcode loader written in C++17</h4>
+<h4 align="center">An open source, UD (3/71) shellcode loader written in C++17</h4>
 
 ## Details
 Icon: https://icon-icons.com/icon/Halloween-eye/109170
@@ -53,7 +53,7 @@ Icon: https://icon-icons.com/icon/Halloween-eye/109170
 - pvk2pfx.exe -pvk AkameCert.pvk -spc AkameCert.cer -pfx AkameCert.pfx<br>
 - signtool.exe sign /v /f AkameCert.pfx /t http://timestamp.digicert.com/?alg=sha1 Akame.exe<br>
 
-## VirusTotal Scan (3/71 security vendors and no sandboxes)
+## VirusTotal Scan (3/71 security vendors and no sandboxes on 24/10/2022)
 I uploaded the loader to Virus Total because I don't want this to be used for malicious purposes!<br>
 The shellcode used was generated with metasploit (payload: windows/x64/meterpreter/reverse_tcp) and encrypted by \resources\encrypt.exe.<br>
 The loader was build with VS22 and signed with a sha1 certificate
