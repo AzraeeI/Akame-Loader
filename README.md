@@ -60,7 +60,7 @@ Icon: https://icon-icons.com/icon/Halloween-eye/109170
 - Generate debug info: No
   
 **6. Add a certificate to your executable<br>**
-  ! Change "Akame.exe" to whatever your executable name is<br>
+  ! Change "Akame.exe" to your executable and AkameCert/AkameCA to whatever you want<br>
 - move Akame.exe Resources && cd Resources<br>
 - makecert.exe -r -pe -n "CN=Akame CA" -ss CA -sr CurrentUser -a sha256 -cy authority -sky signature -sv AkameCA.pvk AkameCA.cer<br>
 - certutil -user -addstore Root AkameCA.cer<br>
