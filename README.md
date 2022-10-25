@@ -92,10 +92,11 @@ The loader was build with VS22 and signed with a sha1 certificate
 
 Link: https://www.virustotal.com/gui/file/68e6a25457093584a043ed3f721be9bc9b6456edd792cb4e30054e85bdc4119f?nocache=1
 
-## What should be added in the future updates?
-- more anti analysis techniques (checking for suspicious files, directories, processes and windows' names)
-- anti debugging (detecting analysis in general)
-- anti static analysis (obfuscating strings, API hashing)
+## What should be added to make it more advanced?
+- More anti analysis techniques (checking for suspicious files, directories, processes and windows' names) <br>
+- Anti debugging (detecting analysis in general) <br>
+- Anti static analysis (obfuscating strings, function call obfuscation and also finding kernel32 location in the process environment block  to avoid using GetModuleHandle())<br>
+- Adding 'fake' imports to fill the import table and make it look more legitimate
 
 ## License
 MIT License
