@@ -65,8 +65,9 @@ Icon: https://icon-icons.com/icon/Halloween-eye/109170
 - set LPORT <PORT>
 - exploit
 
-## Video, poc with meterpreter shellcode
-<div style="width:100%;height:0px;position:relative;padding-bottom:56.250%;"><iframe src="https://streamable.com/e/mwknij" frameborder="0" width="100%" height="100%" allowfullscreen style="width:100%;height:100%;position:absolute;left:0px;top:0px;overflow:hidden;"></iframe></div>
+## Video, WD bypass with a meterpreter shellcode
+Link: https://streamable.com/mwknij
+Date: 24/10/2022
   
 ## VirusTotal Scan (3/71 security vendors and no sandboxes on 24/10/2022)
 I uploaded the loader to Virus Total because I don't want this to be used for malicious purposes!<br>
