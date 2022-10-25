@@ -92,6 +92,11 @@ The loader was build with VS22 and signed with a sha1 certificate
 
 Link: https://www.virustotal.com/gui/file/68e6a25457093584a043ed3f721be9bc9b6456edd792cb4e30054e85bdc4119f?nocache=1
 
+## What should be added in the future updates?
+- more anti analysis techniques (checking for suspicious files, directories, processes and windows' names)
+- anti debugging (detecting analysis in general)
+- anti static analysis (obfuscating strings, API hashing)
+
 ## License
 MIT License
 
