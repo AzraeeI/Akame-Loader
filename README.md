@@ -11,7 +11,7 @@ Icon: https://icon-icons.com/icon/Halloween-eye/109170
 | Name | Akame Loader |
 | Author | WtfIsThis |
 | Timeline | 2022 |
-| Language | C++ |
+| Language | C++17 |
 | Platform | Windows |
 | Version | 1.0 |
 | License | MIT |
