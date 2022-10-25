@@ -37,13 +37,16 @@ Icon: https://icon-icons.com/icon/Halloween-eye/109170
 - Add your icon, your company name, etc.
 
 **5. Build the project<br>**
+- Platform Toolset: Visual Studio 2022 (v143)<br>
 - Language standard: ISO C++17<br>
+- Optimization: /O2 <br>
 - Configuration: Release<br>
 - Platform: x64<br>
 - Runtime Library: Multi-Threaded (/MT)<br>
 - SubSystem: Windows<br>
-- Dependencies: user32.lib;advapi32.lib;crypt32.lib;
-
+- Dependencies: user32.lib;advapi32.lib;crypt32.lib;<br>
+- Generate debug info: No
+  
 **6. Add a certificate to your executable<br>**
   ! Change "Akame.exe" to whatever your executable name is<br>
 - move Akame.exe Resources && cd Resources<br>
