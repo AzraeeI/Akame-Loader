@@ -14,7 +14,7 @@ Icon: https://icon-icons.com/icon/Halloween-eye/109170
 | Platform | Windows |
 | Version | 1.0 |
 | License | MIT |
-| Libraries | user32, advapi32, crypt32 |
+| Libraries | kernel32, advapi32, crypt32 |
 | Encryption | AES256 |
 | Build | Release - x64 |
 
