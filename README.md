@@ -88,8 +88,14 @@ I uploaded the loader to Virus Total because I don't want this to be used for ma
 The shellcode used was generated with metasploit (payload: windows/x64/meterpreter/reverse_tcp) and encrypted by \resources\encrypt.exe.<br>
 The loader was build with VS22 and signed with a sha1 certificate
 
-![Virus Total](https://raw.githubusercontent.com/Wtf-Is-This-x1337/Akame-Loader/main/Images/virustotal.png)
-
+<details open>
+  <summary>File Scan</summary>
+  <img src="https://raw.githubusercontent.com/Wtf-Is-This-x1337/Akame-Loader/main/Images/virustotal1.png">
+</details>
+<details>
+  <summary>File Details</summary>
+  <img src="https://raw.githubusercontent.com/Wtf-Is-This-x1337/Akame-Loader/main/Images/virustotal.png">
+</details>
 Link: https://www.virustotal.com/gui/file/68e6a25457093584a043ed3f721be9bc9b6456edd792cb4e30054e85bdc4119f?nocache=1
 
 ## What should be added to make it more advanced / functional?
