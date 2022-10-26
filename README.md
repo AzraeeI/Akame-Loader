@@ -80,7 +80,8 @@ Icon: https://icon-icons.com/icon/Halloween-eye/109170
 ## Video POC
 Platform: Windows 10 x64 <br>
 Antivirus: Windows Defender <br>
-Date: 24/10/2022
+Date: 24/10/2022 <br>
+! 720p because I can't upload video files bigger than 10MB on github <br>
 ! Blackscreens in the video caused by UAC <br>
 <video src='https://user-images.githubusercontent.com/78364462/197958813-9075bdca-2154-47e2-a7a9-52a7d62bbb4c.mp4'>
   
