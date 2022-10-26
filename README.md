@@ -79,12 +79,11 @@ Icon: https://icon-icons.com/icon/Halloween-eye/109170
 
 ## Video POC
 Platform: Windows 10 x64 <br>
-Antivirus: Windows Defender <br>
-Date: 24/10/2022 <br>
+Antivirus: Windows Defender 24/10/2022 <br>
+<video src='https://user-images.githubusercontent.com/78364462/197958813-9075bdca-2154-47e2-a7a9-52a7d62bbb4c.mp4'></video>
 ! 720p because I can't upload video files bigger than 10MB on github <br>
-! Blackscreens in the video caused by UAC <br>
-<video src='https://user-images.githubusercontent.com/78364462/197958813-9075bdca-2154-47e2-a7a9-52a7d62bbb4c.mp4'>
-  
+! Blackscreens in the video caused by UAC
+
 ## VirusTotal Scan (3/71 security vendors and no sandboxes on 24/10/2022)
 I uploaded the loader to Virus Total because I don't want this to be used for malicious purposes!<br>
 The shellcode used was generated with metasploit (payload: windows/x64/meterpreter/reverse_tcp) and encrypted by \resources\encrypt.exe.<br>
