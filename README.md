@@ -92,11 +92,111 @@ The loader was build with VS22 and signed with a sha1 certificate
 
 Link: https://www.virustotal.com/gui/file/68e6a25457093584a043ed3f721be9bc9b6456edd792cb4e30054e85bdc4119f?nocache=1
 
-## What should be added to make it more advanced?
+## What should be added to make it more advanced / functional?
 - More anti analysis techniques (checking for suspicious files, directories, processes and windows' names) <br>
 - Anti debugging (detecting analysis in general) <br>
-- Anti static analysis (obfuscating strings, function call obfuscation and also finding kernel32 location in the process environment block  to avoid using GetModuleHandle())<br>
+- Anti static analysis (obfuscating strings, function call obfuscation and also finding kernel32 location in the process environment block to avoid using GetModuleHandle())<br>
 - Adding 'fake' imports to fill the import table and make it look more legitimate
+
+## Properties
+**File**
+- Name: Akame.exe <br>
+- Architecture: x64 <br>
+- File size: 170336 bytes <br>
+
+**Hashes**
+- MD5: 560e4432cdbf26332fd3795cf3647cb7 <br>
+- SHA1: ffd9942abb6dff4467456b06af2e2742427aff46 <br>
+- SHA256: 68e6a25457093584a043ed3f721be9bc9b6456edd792cb4e30054e85bdc4119f
+
+**Table of Imports**
+<details>
+  <summary>- ADVAPI32.dll: 9 functions</summary>
+CryptAcquireContextW, 194<br>
+CryptCreateHash, 196<br>
+CryptDecrypt, 197<br>
+CryptDeriveKey, 198<br>
+CryptDestroyHash, 199<br>
+CryptDestroyKey, 200<br>
+CryptHashData, 217<br>
+CryptReleaseContext, 220<br>
+CryptSetKeyParam, 222
+</details>
+<details>
+  <summary>- KERNEL32.dll: 72 functions</summary>
+CloseHandle, 137<br>
+CreateFileW, 206<br>
+CreateThread, 245<br>
+DeleteCriticalSection, 276<br>
+DeviceIoControl, 292<br>
+EnterCriticalSection, 312<br>
+ExitProcess, 359<br>
+FindClose, 382<br>
+FindFirstFileExW, 388<br>
+FindNextFileW, 405<br>
+FlushFileBuffers, 424<br>
+FreeEnvironmentStringsW, 435<br>
+FreeLibrary, 436<br>
+GetACP, 443<br>
+GetCommandLineA, 479<br>
+GetCommandLineW, 480<br>
+GetConsoleMode, 517<br>
+GetConsoleOutputCP, 521<br>
+GetCPInfo, 458<br>
+GetCurrentProcess, 544<br>
+GetCurrentProcessId, 545<br>
+GetCurrentThreadId, 549<br>
+GetEnvironmentStringsW, 577<br>
+GetFileType, 600<br>
+GetLastError, 618<br>
+GetModuleFileNameW, 637<br>
+GetModuleHandleExW, 640<br>
+GetModuleHandleW, 641<br>
+GetOEMCP, 673<br>
+GetProcAddress, 696<br>
+GetProcessHeap, 702<br>
+GetStartupInfoW, 730<br>
+GetStdHandle, 732<br>
+GetStringTypeW, 737<br>
+GetSystemTimeAsFileTime, 755<br>
+GetTickCount64, 786<br>
+HeapAlloc, 849<br>
+HeapFree, 853<br>
+HeapReAlloc, 856<br>
+HeapSize, 858<br>
+InitializeCriticalSectionAndSpinCount, 875<br>
+InitializeSListHead, 879<br>
+IsDebuggerPresent, 901<br>
+IsProcessorFeaturePresent, 908<br>
+IsValidCodePage, 914<br>
+LCMapStringW, 952<br>
+LeaveCriticalSection, 964<br>
+LoadLibraryExW, 970<br>
+MultiByteToWideChar, 1014<br>
+QueryPerformanceCounter, 1106<br>
+RaiseException, 1128<br>
+RtlCaptureContext, 1237<br>
+RtlLookupFunctionEntry, 1244<br>
+RtlUnwindEx, 1250<br>
+RtlVirtualUnwind, 1251<br>
+SetFilePointerEx, 1331<br>
+SetLastError, 1345<br>
+SetStdHandle, 1371<br>
+SetUnhandledExceptionFilter, 1407<br>
+Sleep, 1423<br>
+TerminateProcess, 1438<br>
+TlsAlloc, 1456<br>
+TlsFree, 1457<br>
+TlsGetValue, 1458<br>
+TlsSetValue, 1459<br>
+UnhandledExceptionFilter, 1472<br>
+VirtualAlloc, 1497<br>
+VirtualProtect, 1503<br>
+WaitForSingleObject, 1514<br>
+WideCharToMultiByte, 1553<br>
+WriteConsoleW, 1572<br>
+WriteFile, 1573
+</details>
 
 ## License
 MIT License
