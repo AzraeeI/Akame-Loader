@@ -95,7 +95,7 @@ Link: https://www.virustotal.com/gui/file/68e6a25457093584a043ed3f721be9bc9b6456
 ## What should be added to make it more advanced / functional?
 - More anti analysis techniques (checking for suspicious files, directories, processes and windows' names) <br>
 - Anti debugging (detecting analysis in general) <br>
-- Anti static analysis (obfuscating strings, function call obfuscation and also finding kernel32 location in the process environment block to avoid using GetModuleHandle())<br>
+- Anti static analysis (function call obfuscation and also finding kernel32 location in the process environment block to avoid using GetModuleHandle() and GetProcAddress())<br>
 - Adding 'fake' imports to fill the import table and make it look more legitimate
 
 ## Properties
