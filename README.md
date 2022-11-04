@@ -145,7 +145,6 @@ Link: https://www.virustotal.com/gui/file/68e6a25457093584a043ed3f721be9bc9b6456
 - Anti debugging (detecting analysis in general) <br>
 - Anti static analysis (function call obfuscation and also finding kernel32 location in the process environment block to avoid using GetModuleHandle and GetProcAddress). POC:
 ```cpp
-// EXAMPLE
 BOOL (WINAPI*pVirtualProtect)(LPVOID lpAddress, SIZE_T dwSize, DWORD flNewProtect, PDWORD lpflOldProtect);
 
 pVirtualProtect = GetProcAddress(GetModuleHandle("kernel32.dll"), "VirtualProtect"); // Encrypt VirtualProtect with encrypt.exe, don't paste the plain text
