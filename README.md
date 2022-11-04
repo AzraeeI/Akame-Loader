@@ -109,7 +109,7 @@ Link: https://www.virustotal.com/gui/file/68e6a25457093584a043ed3f721be9bc9b6456
     // Create mutex
     CreateMutex(0, 0, L"MUTEX_RANDOM_STRING");
 ```
-- More anti analysis techniques (functions that check for suspicious files, directories, processes, windows' names, etc.)
+- More anti analysis techniques (functions that check for suspicious files, directories, processes, windows' names, etc.). POC:
 ```cpp
     // A simple hard-disk check is already done, but we can as well check the available RAM / CPU
     
@@ -143,7 +143,7 @@ Link: https://www.virustotal.com/gui/file/68e6a25457093584a043ed3f721be9bc9b6456
     }
 ```
 - Anti debugging (detecting analysis in general) <br>
-- Anti static analysis (function call obfuscation and also finding kernel32 location in the process environment block to avoid using GetModuleHandle() and GetProcAddress())
+- Anti static analysis (function call obfuscation and also finding kernel32 location in the process environment block to avoid using GetModuleHandle and GetProcAddress). POC:
 ```cpp
 // EXAMPLE
 BOOL (WINAPI*pVirtualProtect)(LPVOID lpAddress, SIZE_T dwSize, DWORD flNewProtect, PDWORD lpflOldProtect);
