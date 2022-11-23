@@ -40,7 +40,7 @@ Icon: https://icon-icons.com/icon/Halloween-eye/109170
 - mv shellcode.bin \Akame Loader\x64\Release\Resources\ <br>
 - cd \Akame Loader\x64\Release\Resources\ <br>
 - (optional) encrypt --help<br>
-- encrypt.exe -l cpp -m shellcode.bin -e random -o cli<br>
+- encrypt.exe -l cpp -m file -i shellcode.bin -e random -o cli<br>
 
 **3. Copy the output and paste it under the "payload" comment<br>**
 - Paste your IV key, your KEY and your BUFF into the existent vectors<br>
