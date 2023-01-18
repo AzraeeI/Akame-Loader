@@ -97,7 +97,8 @@ The loader was build with VS22 and signed with a sha1 certificate
   <summary>File Details</summary>
   <img src="https://raw.githubusercontent.com/Wtf-Is-This-x1337/Akame-Loader/main/Images/virustotal.png">
 </details>
-Link: https://www.virustotal.com/gui/file/68e6a25457093584a043ed3f721be9bc9b6456edd792cb4e30054e85bdc4119f?nocache=1
+Link: https://www.virustotal.com/gui/file/68e6a25457093584a043ed3f721be9bc9b6456edd792cb4e30054e85bdc4119f
+! Attention, the reason the file gets a lot of detections now is because Virus Total distributes samples, this is completely normal, with simple code obfuscation / small changes you can obtain a new, FUD payload, don't be script kiddies / pasters, learn how to code, stay safe!
 
 ## What should be added to make it more advanced / functional?
 - Create Mutex to avoid running multiple instances of akame on the same machine. POC:
