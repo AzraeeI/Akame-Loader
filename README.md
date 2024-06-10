@@ -1,6 +1,6 @@
 <h1 align="center">Akame Loader</h1>
 <p align="center">
-  <img width="250" height="250" src="https://raw.githubusercontent.com/Wtf-Is-This-x1337/Akame-Loader/main/Images/akame.png" width="250" height="250">
+  <img width="250" height="250" src="https://raw.githubusercontent.com/N3agu/Akame-Loader/main/Images/akame.png" width="250" height="250">
 </p>
 <h4 align="center">An open source, UD (3/71) shellcode loader written in C++</h4>
 
@@ -9,7 +9,7 @@ Icon: https://icon-icons.com/icon/Halloween-eye/109170
 | Name | Details |
 | ------ | ------ |
 | Name | Akame Loader |
-| Author | WtfIsThis |
+| Author | N3agu |
 | Language | C++ |
 | Platform | Windows |
 | Version | 1.1 |
@@ -102,11 +102,11 @@ The loader was build with VS22 and signed with a sha1 certificate
 
 <details open>
   <summary>File Scan</summary>
-  <img src="https://raw.githubusercontent.com/Wtf-Is-This-x1337/Akame-Loader/main/Images/virustotal1.png">
+  <img src="https://raw.githubusercontent.com/N3agu/Akame-Loader/main/Images/virustotal1.png">
 </details>
 <details>
   <summary>File Details</summary>
-  <img src="https://raw.githubusercontent.com/Wtf-Is-This-x1337/Akame-Loader/main/Images/virustotal.png">
+  <img src="https://raw.githubusercontent.com/N3agu/Akame-Loader/main/Images/virustotal.png">
 </details>
 Link: https://www.virustotal.com/gui/file/68e6a25457093584a043ed3f721be9bc9b6456edd792cb4e30054e85bdc4119f
 </br><b>! Attention, the reason the loader gets a lot of detections now is because Virus Total distributes samples, this is completely normal. With simple code obfuscation / small changes you can obtain a new, FUD payload, don't be script kiddies / pasters, learn how to code, stay safe!</b>
@@ -118,7 +118,7 @@ Link: https://www.virustotal.com/gui/file/68e6a25457093584a043ed3f721be9bc9b6456
 2. Install the pre-compiled [OLLVM-17 files](https://github.com/DreamSoule/ollvm17/releases/tag/17.0.6)
 3. Navigate to `C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\Llvm\x64\bin` and copy the files that you downloaded from Github and overwrite
 4. Copy the following line and add it as "Additional Options" in Configuration Properties -> C/C++ -> Command Line<br>
-<img src="https://raw.githubusercontent.com/Wtf-Is-This-x1337/Akame-Loader/main/Images/commandLine.png">
+<img src="https://raw.githubusercontent.com/N3agu/Akame-Loader/main/Images/commandLine.png">
 
 ! The provided code is a set of parameters used with LLVM's obfuscation passes, here's a list of each parameter and what it does, parameters taken directly from ollvm-17(not official one) repo.<br>
 `bcf: This parameter is used for fake control flow.`<br>
@@ -136,8 +136,8 @@ Link: https://www.virustotal.com/gui/file/68e6a25457093584a043ed3f721be9bc9b6456
 
 After that you only need to compile your solution and you will get a fairly large executable but with various flattening, encryption, substitution applied.
 Here's what you should get on analyzing the control flow graph with IDA:
-<img src="https://raw.githubusercontent.com/Wtf-Is-This-x1337/Akame-Loader/main/Images/graph.png">
-<img src="https://raw.githubusercontent.com/Wtf-Is-This-x1337/Akame-Loader/main/Images/graph1.png">
+<img src="https://raw.githubusercontent.com/N3agu/Akame-Loader/main/Images/graph.png">
+<img src="https://raw.githubusercontent.com/N3agu/Akame-Loader/main/Images/graph1.png">
 
 - Create Mutex to avoid running multiple instances of akame on the same machine. POC:
 ```cpp
@@ -289,7 +289,7 @@ WriteFile, 1573
 ## License
 MIT License
 
-Copyright (c) 2022 WtfIsThis
+Copyright (c) 2024 N3agu
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
