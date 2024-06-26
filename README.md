@@ -120,19 +120,19 @@ Link: https://www.virustotal.com/gui/file/68e6a25457093584a043ed3f721be9bc9b6456
 4. Copy the following line and add it as "Additional Options" in Configuration Properties -> C/C++ -> Command Line<br>
 <img src="https://raw.githubusercontent.com/N3agu/Akame-Loader/main/Images/commandLine.png">
 
-! The provided code is a set of parameters used with LLVM's obfuscation passes, here's a list of each parameter and what it does, parameters taken directly from ollvm-17(not official one) repo.<br>
-`bcf: This parameter is used for fake control flow.`<br>
-`bcf_prob: This parameter sets the false control flow confusion probability, which ranges from 1 to 100, with a default value of 70.`<br>
-`bcf_loop: This parameter sets the number of false control flow repetitions, with no limit and a default value of 2.`<br>
-`fla: This parameter is used for control flow flattening.`<br>
-`sub: This parameter is used for instruction replacement, specifically add/and/sub/or/xor.`<br>
-`sub_loop: This parameter sets the number of instruction substitutions, with no limit and a default value of 1.`<br>
-`sobf: This parameter is used for string obfuscation, but only for narrow characters.`<br>
-`split: This parameter is used for basic block split.`<br>
-`split_num: This parameter sets the number of splits of the original basic block, with no limit and a default value of 3.`<br>
-`ibr: This parameter is used for indirect branch.`<br>
-`icall: This parameter is used for indirect call, specifically call register.`<br>
-`igv: This parameter is used for indirect global variable.`<br>
+! The provided code is a set of parameters used with LLVM's obfuscation passes, here's a list of each parameter and what it does, parameters taken directly from ollvm-17 repository.<br>
+- *bcf*: This parameter is used for fake control flow.<br>
+- *bcf_prob*: This parameter sets the false control flow confusion probability, which ranges from 1 to 100, with a default value of 70.<br>
+- *bcf_loop*: This parameter sets the number of false control flow repetitions, with no limit and a default value of 2.<br>
+- *fla*: This parameter is used for control flow flattening.<br>
+- *sub*: This parameter is used for instruction replacement, specifically add/and/sub/or/xor.<br>
+- *sub_loop*: This parameter sets the number of instruction substitutions, with no limit and a default value of 1.<br>
+- *sobf*: This parameter is used for string obfuscation, but only for narrow characters.`<br>
+- *split*: This parameter is used for basic block split.<br>
+- *split_num*: This parameter sets the number of splits of the original basic block, with no limit and a default value of 3.<br>
+- *ibr*: This parameter is used for indirect branch.<br>
+- *icall*: This parameter is used for indirect call, specifically call register.<br>
+- *igv*: This parameter is used for indirect global variable.<br>
 
 After that you only need to compile your solution and you will get a fairly large executable but with various flattening, encryption, substitution applied.
 Here's what you should get on analyzing the control flow graph with IDA:
